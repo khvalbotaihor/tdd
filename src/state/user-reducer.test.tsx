@@ -1,9 +1,9 @@
 import React from 'react';
-import {userReducer} from './user-reducer';
+import {TChangeName, TIncrementAge, TIncrementChildrenCount, userReducer} from './user-reducer';
 
 test('user reducer should increment only age', () => {
     const startState = { age: 20, childrenCount: 2, name: 'Dimych' };
-    const action = { type: 'INCREMENT-AGE' }
+    const action: TIncrementAge = { type: 'INCREMENT-AGE' }
     const endState = userReducer(startState, action)
 
     expect(endState.age).toBe(21);
@@ -12,7 +12,7 @@ test('user reducer should increment only age', () => {
 
 test('user reducer should increment only childrenCount', () => {
     const startState = { age: 20, childrenCount: 2, name: 'Dimych' };
-    const action = { type: 'INCREMENT-CHILDREN-COUNT' }
+    const action: TIncrementChildrenCount = { type: 'INCREMENT-CHILDREN-COUNT' }
     const endState = userReducer(startState, action)
 
     expect(endState.age).toBe(20);
@@ -22,7 +22,7 @@ test('user reducer should increment only childrenCount', () => {
 test('user reducer should change name of user', () => {
     const startState = { name: 'Dimych', age: 20, childrenCount: 2 };
     const newName = 'Viktor';
-    const action = { type: 'CHANGE-NAME', newName: newName }
+    const action: TChangeName = { type: 'CHANGE-NAME', newName: newName }
     const endState = userReducer(startState, action)
 
     expect(endState.name).toBe(newName);

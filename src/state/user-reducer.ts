@@ -3,28 +3,34 @@ type StateType = {
     childrenCount: number
     name: string
 }
-type ActionType = {
-    type: string
-    [key: string]: any
+
+export type TIncrementAge = {
+    type: 'INCREMENT-AGE'
 }
 
-// меня вызовут и дадут мне стейт (почти всегда объект)
-// и инструкцию (action, тоже объект)
-// согласно прописаному type в этом action (инструкции) я поменяю state
-export const userReducer = (state: StateType, action: ActionType) => {
+export type TIncrementChildrenCount = {
+    type: 'INCREMENT-CHILDREN-COUNT'
+}
+
+export type TChangeName = {
+    type: 'CHANGE-NAME'
+    newName: string
+}
+
+type ActionType = TIncrementAge | TIncrementChildrenCount | TChangeName
+
+export const userReducer = (state: StateType, action: ActionType): StateType => {
     switch (action.type) {
         case 'INCREMENT-AGE':
-            let newState = {...state};//делаем копию
-            newState.age = state.age + 1;// у копии имеем право менять св-во
-            return newState;//возвращаем копию
+            let newState = {...state};
+            newState.age = state.age + 1;
+            return newState;
         case 'INCREMENT-CHILDREN-COUNT':
-            // а можно без создания переменных промежуточных (делайте, как вам понятнее)
             return {
                 ...state,
                 childrenCount: state.childrenCount + 1
             };
         case 'CHANGE-NAME':
-            // а можно без  создания переменных промежуточных (делайте, как вам понятнее)
             return {
                 ...state,
                 name: action.newName
