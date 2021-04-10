@@ -24,7 +24,6 @@ beforeEach(() => {
 })
 
 test('correct todolist should be removed', () => {
-
     const endState = todolistsReducer(startState, RemoveTodolistAC(todolistId1))
 
     expect(endState.length).toBe(1);
@@ -44,7 +43,6 @@ test('correct todolist should be added', () => {
 
 test('correct todolist should change its name', () => {
     let newTodolistTitle = "New Todolist";
-
     const action = ChangeTodolistTitleAC(todolistId2, newTodolistTitle);
 
     const endState = todolistsReducer(startState, action);
@@ -54,9 +52,7 @@ test('correct todolist should change its name', () => {
 });
 
 test('correct filter of todolist should be changed', () => {
-
     let newFilter: FilterValuesType = "completed";
-
     const action = ChangeTodolistFilterAC(todolistId2, newFilter);
 
     const endState = todolistsReducer(startState, action);
