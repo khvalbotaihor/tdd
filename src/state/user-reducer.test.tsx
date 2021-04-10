@@ -3,9 +3,6 @@ import {
     changeNameAC,
     incrementAgeAC,
     incrementChildrenCountAC,
-    TChangeName,
-    TIncrementAge,
-    TIncrementChildrenCount,
     userReducer
 } from './user-reducer';
 
