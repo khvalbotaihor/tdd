@@ -11,6 +11,7 @@ import {
     TChangeTaskTitle,
     TRemoveTask
 } from "./tasks-reducer";
+import {AddTodolistAC, AddTodolistActionType} from "./todolists-reducer";
 
 let startState: TasksStateType;
 
@@ -65,6 +66,20 @@ test('correct task status should be changed', () => {
     expect(endState['todolistId2'][1].isDone).toBe(false)
     expect(endState['todolistId2'][0].isDone).toBe(true)
     expect(endState['todolistId1'].every(t => t.isDone === true)).toBeTruthy()
+});
+
+test('empty task should be created after todoList added', () => {
+    const todoListTitle = 'New todoList'
+    const action: AddTodolistActionType = AddTodolistAC(todoListTitle);
+
+    const endState = tasksReducer(startState, action);
+
+    const keys = Object.keys(endState)
+    const newKey = keys.find(k => k !== 'todolistId1' && k !== 'todolistId2')
+    if (!newKey){
+        throw Error('New key is not present')
+    }
+
 });
 
 
