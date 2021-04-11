@@ -9,11 +9,11 @@ import {
 import {v1} from 'uuid';
 import {FilterValuesType, TasksStateType, TodolistType} from '../App';
 import {
-    AddTaskAC,
+    AddTaskAC, ChangeTaskStatusAC,
     ChangeTaskTitleAC,
     RemoveTaskAC,
     TAddTask,
-    tasksReducer,
+    tasksReducer, TChangeTaskStatus,
     TChangeTaskTitle,
     TRemoveTask
 } from "./tasks-reducer";
@@ -65,13 +65,12 @@ test('correct task should change its name', () => {
 });
 
 test('correct task status should be changed', () => {
-    let newFilter: FilterValuesType = "completed";
-    const action = ChangeTodolistFilterAC(todolistId2, newFilter);
+    const action: TChangeTaskStatus = ChangeTaskStatusAC('todolistId2','2', false);
 
     const endState = tasksReducer(startState, action);
-
-    expect(endState[0].filter).toBe("all");
-    expect(endState[1].filter).toBe(newFilter);
+    expect(endState['todolistId2'][1].isDone).toBe(false)
+    expect(endState['todolistId2'][0].isDone).toBe(true)
+    expect(endState['todolistId1'].every(t => t.isDone === true)).toBeTruthy()
 });
 
 
