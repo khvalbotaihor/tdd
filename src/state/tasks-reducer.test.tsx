@@ -1,19 +1,13 @@
-import React, {useState} from 'react';
+import React from 'react';
+
+import { TasksStateType } from '../App';
 import {
-    AddTodolistAC,
-    ChangeTodolistFilterAC,
-    ChangeTodolistTitleAC,
-    RemoveTodolistAC,
-    todolistsReducer
-} from './todolists-reducer';
-import {v1} from 'uuid';
-import {FilterValuesType, TasksStateType, TodolistType} from '../App';
-import {
-    AddTaskAC, ChangeTaskStatusAC,
-    ChangeTaskTitleAC,
+    AddTaskAC,
+    ChangeTaskStatusAC, ChangeTaskTitleAC,
     RemoveTaskAC,
     TAddTask,
-    tasksReducer, TChangeTaskStatus,
+    tasksReducer,
+    TChangeTaskStatus,
     TChangeTaskTitle,
     TRemoveTask
 } from "./tasks-reducer";
