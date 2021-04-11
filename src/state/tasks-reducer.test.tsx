@@ -81,7 +81,7 @@ test('empty task should be created after todoList added', () => {
     }
 
     expect(keys.length).toBe(3)
-    expect(newKey).toBe([])
+    expect(endState[newKey]).toStrictEqual([])
 
 });
 
