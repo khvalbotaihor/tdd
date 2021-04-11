@@ -11,7 +11,7 @@ import {
     TChangeTaskTitle,
     TRemoveTask
 } from "./tasks-reducer";
-import {AddTodolistAC, AddTodolistActionType} from "./todolists-reducer";
+import {AddTodolistAC, AddTodolistActionType, RemoveTodolistAC, RemoveTodolistActionType} from "./todolists-reducer";
 
 let startState: TasksStateType;
 
@@ -82,7 +82,20 @@ test('empty task should be created after todoList added', () => {
 
     expect(keys.length).toBe(3)
     expect(endState[newKey]).toStrictEqual([])
+});
+test('property with todolist should be deleted', () => {
+    const action: RemoveTodolistActionType = RemoveTodolistAC('todolistId2');
 
+    const endState = tasksReducer(startState, action);
+
+    const keys = Object.keys(endState)
+    const newKey = keys.find(k => k !== 'todolistId1' && k !== 'todolistId2')
+    if (!newKey){
+        throw Error('New key is not present')
+    }
+
+    expect(keys.length).toBe(3)
+    expect(endState[newKey]).toStrictEqual([])
 });
 
 
