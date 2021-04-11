@@ -1,5 +1,4 @@
 import React from 'react';
-
 import { TasksStateType } from '../App';
 import {
     AddTaskAC,
