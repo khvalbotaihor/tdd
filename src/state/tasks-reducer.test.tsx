@@ -87,7 +87,6 @@ test('empty task should be created after todoList added', () => {
 test('property with todolist should be deleted', () => {
     const action: RemoveTodolistActionType = RemoveTodolistAC('todolistId2');
     const endState = tasksReducer(startState, action);
-
     const keys = Object.keys(endState)
 
     expect(keys.length).toBe(1)
