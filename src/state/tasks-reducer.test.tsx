@@ -60,7 +60,8 @@ test('correct task should change its name', () => {
     const action: TChangeTaskTitle = ChangeTaskTitleAC('todolistId2','2',newTaskTitle);
 
     const endState = tasksReducer(startState, action);
-
+    expect(endState['todolistId2'][1].title).toBe(newTaskTitle)
+    expect(endState['todolistId1'][1].title).toBe('JS')
 });
 
 test('correct task status should be changed', () => {
@@ -72,5 +73,6 @@ test('correct task status should be changed', () => {
     expect(endState[0].filter).toBe("all");
     expect(endState[1].filter).toBe(newFilter);
 });
+
 
 
