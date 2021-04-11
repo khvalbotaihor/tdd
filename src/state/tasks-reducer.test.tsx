@@ -80,6 +80,9 @@ test('empty task should be created after todoList added', () => {
         throw Error('New key is not present')
     }
 
+    expect(keys.length).toBe(3)
+    expect(newKey).toBe([])
+
 });
 
 
